@@ -5,13 +5,14 @@
 #ifndef __CSAPP_H__
 #define __CSAPP_H__
 
+//#include <stdio.h>
+#include <stdarg.h>
+#include <setjmp.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdarg.h>
 #include <unistd.h>
 #include <string.h>
 #include <ctype.h>
-#include <setjmp.h>
 #include <signal.h>
 #include <dirent.h>
 #include <sys/time.h>
@@ -19,15 +20,22 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <sys/mman.h>
 #include <errno.h>
+#include <sys/mman.h>
 #include <math.h>
 #include <pthread.h>
 #include <semaphore.h>
 #include <sys/socket.h>
+#include <sys/epoll.h>
+#include <sys/select.h>
 #include <netdb.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <errno.h>
+#include <iostream>
+
+using namespace std;
+
 
 /* Default file permissions are DEF_MODE & ~DEF_UMASK */
 /* $begin createmasks */
@@ -107,7 +115,7 @@ ssize_t Write(int fd, const void *buf, size_t count);
 off_t Lseek(int fildes, off_t offset, int whence);
 void Close(int fd);
 int Select(int  n, fd_set *readfds, fd_set *writefds, fd_set *exceptfds,
-       struct timeval *timeout);
+           struct timeval *timeout);
 int Dup2(int fd1, int fd2);
 void Stat(const char *filename, struct stat *buf);
 void Fstat(int fd, struct stat *buf) ;
@@ -159,7 +167,7 @@ struct hostent *Gethostbyaddr(const char *addr, int len, int type);
 
 /* Pthreads thread control wrappers */
 void Pthread_create(pthread_t *tidp, pthread_attr_t *attrp,
-            void * (*routine)(void *), void *argp);
+                    void * (*routine)(void *), void *argp);
 void Pthread_join(pthread_t tid, void **thread_return);
 void Pthread_cancel(pthread_t tid);
 void Pthread_detach(pthread_t tid);

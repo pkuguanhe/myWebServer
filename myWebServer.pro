@@ -10,8 +10,8 @@ SOURCES += \
 
 HEADERS += \
 #    tip.h \
-    temp.h \
-    csapp.h
+    csapp.h \
+    threadpool.h
 
 unix:!macx: LIBS += -L$$PWD/../../../../usr/lib/x86_64-linux-gnu/ -lpthread
 
