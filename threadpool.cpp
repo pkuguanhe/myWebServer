@@ -39,7 +39,7 @@ void* workThread(void* arg)
         (*(newTask->func))(newTask->arg);
         free(newTask);
     }
-
+    cout<<"thread end"<<endl;
     pthread_exit(0);
 }
 
