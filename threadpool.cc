@@ -1,7 +1,9 @@
-﻿#include "threadpool.h"
-
+﻿
+#include "gloable.h"
+#include "threadpool.h"
 void* workThread(void* arg)
 {
+    ThreadPool* myThreadPool=(ThreadPool*)arg;
     pthread_detach(pthread_self());
     while(1)
     {
@@ -21,7 +23,7 @@ void* workThread(void* arg)
     pthread_exit(0);
 }
 
-void threadPoolInit()
+void threadPoolInit(ThreadPool *myThreadPool)
 {
     myThreadPool = (ThreadPool*)malloc(sizeof(ThreadPool));
     myThreadPool->shutdown = false;
@@ -44,7 +46,7 @@ void threadPoolDestory(ThreadPool* myThreadPool)
     return;
 }
 
-void taskAdd(void (*func)(int), int arg)
+void taskAdd(ThreadPool* myThreadPool, void (*func)(int), int arg)
 {
     Task* newTask = (Task*)malloc(sizeof(Task));
     newTask->func = func;
@@ -59,25 +61,3 @@ void taskAdd(void (*func)(int), int arg)
 
     pthread_mutex_unlock(&(myThreadPool->mtx));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

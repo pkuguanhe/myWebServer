@@ -1,4 +1,6 @@
-﻿#include <stdio.h>
+﻿#ifndef _POOL__
+#define _POOL__
+#include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
 #include <iostream>
@@ -12,7 +14,7 @@ struct Task
     void (*func)(int);
     int arg;
     struct Task* next;
-} *task;
+} ;
 
 struct ThreadPool
 {
@@ -21,4 +23,11 @@ struct ThreadPool
     pthread_mutex_t mtx;
     pthread_t threads[THREADNUMS];
     struct Task *head;
-} *myThreadPool;
+} ;
+
+void* workThread(void* arg, ThreadPool* myThreadPool);
+void threadPoolInit(ThreadPool *myThreadPool);
+void threadPoolDestory(ThreadPool* myThreadPool);
+void taskAdd(ThreadPool* myThreadPool, void (*func)(int), int arg);
+
+#endif

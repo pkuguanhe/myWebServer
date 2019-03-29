@@ -4,14 +4,16 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    threadpool.cpp \
-    csapp.cpp \
-    main.cpp
+    threadpool.cc \
+    csapp.cc \
+    main.cc \
+    myhttp.cc
 
 HEADERS += \
-#    tip.h \
     csapp.h \
-    threadpool.h
+    threadpool.h \
+    myhttp.h \
+    gloable.h
 
 unix:!macx: LIBS += -L$$PWD/../../../../usr/lib/x86_64-linux-gnu/ -lpthread
 
