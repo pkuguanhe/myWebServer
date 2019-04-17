@@ -1,6 +1,4 @@
-﻿
-#include "gloable.h"
-#include "threadpool.h"
+﻿#include "threadpool.h"
 #include "myhttp.h"
 
 int main(int argc, char *argv[])

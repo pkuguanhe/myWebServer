@@ -1,5 +1,4 @@
-﻿
-#include "threadpool.h"
+﻿#include "threadpool.h"
 void* workThread(void* arg)
 {
     ThreadPool* myThreadPool=(ThreadPool*)arg;

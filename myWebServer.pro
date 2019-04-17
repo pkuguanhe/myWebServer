@@ -13,7 +13,6 @@ HEADERS += \
     csapp.h \
     threadpool.h \
     myhttp.h \
-    gloable.h
 
 unix:!macx: LIBS += -L$$PWD/../../../../usr/lib/x86_64-linux-gnu/ -lpthread
 
